@@ -8,17 +8,24 @@ import {
   Route,
 } from "react-router-dom";
 import Home from './views/Home/Home';
+import PokemonDetail from './views/PokemonDetail/PokemonDetail';
 import Pokedex from './views/Pokedex/Pokedex';
+import Footer from './components/Footer/Footer';
+
 
 function App() {
 
   return (
     <BrowserRouter>
       <Banner />
-      <Routes>
-        <Route path="/" exact element={<Home />} />
-        <Route path='/Pokedex' element={<Pokedex/>}/>
-      </Routes>
+      <main className='min-vh-100 mx-auto'>
+        <Routes>
+          <Route path="/" exact element={<Home />} />
+          <Route path='/Pokedex' element={<Pokedex />} />
+          <Route path='/pokemon/:id' element={<PokemonDetail/>} />
+        </Routes>
+      </main>
+      <Footer/>
     </BrowserRouter>
   )
 }
