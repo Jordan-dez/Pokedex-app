@@ -1,7 +1,17 @@
-// import { useState, useEffect } from 'react';
+/**
+ * TOUS LES IMPORTS DES FONCTIONS ET LIBRAIRIES ICI
+ */
+
  import axios from 'axios';
+ /****
+  * Déclaration d'une constante
+  */
 const URL = 'https://pokeapi.co/api/v2/pokemon?limit=151';
 
+/******
+ * cette function intérroge une url et retourne une promeesse qui sera resolue où elle sera exploitée
+ * et permet d'avoir les 151 pokémons
+ */
 export const getPokemons = async () => {
     try {
         const { data } = await axios.get(URL);
@@ -13,15 +23,3 @@ export const getPokemons = async () => {
     }
   
 };
-
-// export const getMorePokemons = (offset) => {
-//     try {
-//         return fetch(`${URL}?offset=${offset}&limit=20`).then((response) =>
-//         response.json()
-//       );
-//     } catch (error) {
-//         console.log(error)
-        
-//     }
-
-// };

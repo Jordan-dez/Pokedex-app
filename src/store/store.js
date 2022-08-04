@@ -1,7 +1,11 @@
+/**
+ * TOUS LES IMPORTS DES FONCTIONS ET LIBRAIRIES ICI
+ */
 import { combineReducers, legacy_createStore } from "redux";
 import LocalStorage from "../reducers/LocalStorageReducers.js"
 
 const rootReducers=combineReducers({
+    //pokedex reducer
     pokedex: LocalStorage
 })
 

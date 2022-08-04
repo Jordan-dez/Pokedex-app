@@ -1,3 +1,6 @@
+/******
+ * Tous les imports sont ici
+ */
 import React,{useEffect,useState} from 'react'
 import { useParams, Link } from 'react-router-dom'
 import axios from "axios"
@@ -26,8 +29,6 @@ const PokemonDetail = () => {
           setPokemon(data);
         });
       },[id]);
-
-      console.log(pokemon)
     return (
         <article>
             {
@@ -75,7 +76,7 @@ const PokemonDetail = () => {
                     
                     <div>
                         {
-                            pokemon.types.map(type=><p key={uuidv4()}>1 {type.type.name}</p>)
+                            pokemon.types.map(type=><p key={uuidv4()}> {type.type.name}</p>)
                         }
                     </div>
                 
