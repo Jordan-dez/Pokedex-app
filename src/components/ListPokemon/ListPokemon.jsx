@@ -1,18 +1,34 @@
 import React from 'react'
-import PokemonCard from '../PokemonCard/PokemonCard'
 
-const ListPokemon = ({ pokemons }) => {
-    console.log("poke",pokemons);
+
+import PokemonCard from '../PokemonCard/PokemonCard'
+import {getPokemonIdFromUrl} from "../../helpers/pokemonUtils/"
+import {useSelector} from "react-redux"
+
+const ListPokemon = ({ pokemons,searchValue}) => {
+    const test = useSelector(state=>state.pokedex)
     return (
         <section className="d-flex flex-wrap">
-        
             {
-                pokemons && pokemons.map(pokemon => <PokemonCard
-                    name={pokemon.name}
-                    key={pokemon.id}
-                    picture={pokemon.sprites.front_default}
-                    id={pokemon.id}
-                />)
+                // loading ?<p>loading</p> :
+                 <>
+                {
+                    pokemons?.filter((pokemon)=>{
+                        if(searchValue==""){
+                            return pokemon
+                        }else if(pokemon.name.toLowerCase().includes(searchValue?.toLowerCase())){
+                            return pokemon
+                        }
+                    }).map((pokemon,index) =>{ 
+                        // console.log("pokemon?.url",pokemon?.url)
+                    return <PokemonCard
+                         name={pokemon.name}
+                          id={getPokemonIdFromUrl(pokemon?.url)}
+                         key={pokemon.name}
+                    />})
+                }
+                </>
+
             }
         </section>
     )

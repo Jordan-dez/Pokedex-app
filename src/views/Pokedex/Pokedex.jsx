@@ -1,8 +1,16 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import ListPokemon from "../../components/ListPokemon/ListPokemon"
 
 const Pokedex = () => {
+
+  const pokedex = useSelector(state=>state.pokedex)
   return (
-    <div>Pokedex</div>
+    <>
+    {
+      pokedex && <ListPokemon pokemons={pokedex}/>
+    }
+    </>
   )
 }
 
