@@ -6,15 +6,16 @@ import {getPokemonIdFromUrl} from "../../helpers/pokemonUtils/"
 import {useSelector} from "react-redux"
 
 const ListPokemon = ({ pokemons,searchValue}) => {
-    const test = useSelector(state=>state.pokedex)
+     const test = useSelector(state=>state.pokedex)
+    console.log(searchValue)
     return (
-        <section className="d-flex flex-wrap">
+        <ul className="row  ">
             {
                 // loading ?<p>loading</p> :
                  <>
                 {
                     pokemons?.filter((pokemon)=>{
-                        if(searchValue==""){
+                        if(searchValue==""|| searchValue==undefined){
                             return pokemon
                         }else if(pokemon.name.toLowerCase().includes(searchValue?.toLowerCase())){
                             return pokemon
@@ -22,15 +23,14 @@ const ListPokemon = ({ pokemons,searchValue}) => {
                     }).map((pokemon,index) =>{ 
                         // console.log("pokemon?.url",pokemon?.url)
                     return <PokemonCard
-                         name={pokemon.name}
-                          id={getPokemonIdFromUrl(pokemon?.url)}
+                            pokemon={pokemon}
                          key={pokemon.name}
                     />})
                 }
                 </>
 
             }
-        </section>
+        </ul>
     )
 }
 

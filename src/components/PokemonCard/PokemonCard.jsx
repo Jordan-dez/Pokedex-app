@@ -1,12 +1,16 @@
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom'
-import "./PokemonCard.css"
+import stylesCard from "./PokemonCard.module.css"
 import {useDispatch,useSelector} from "react-redux";
-import {AddToLocalStorage,RemoveToLocalStorage} from "../../actions/index.js"
+import {AddToLocalStorage,RemoveToLocalStorage} from "../../actions/index"
+import {getPokemonIdFromUrl} from "../../helpers/pokemonUtils/"
 
 
 
-const PokemonCard = ({name,id}) => {
+const PokemonCard = ({pokemon}) => {
+    const {url,name} = pokemon;
+
+    const id = getPokemonIdFromUrl(pokemon.url)
 
     const dispatch = useDispatch();
     const pokedex = useSelector(state=>state.pokedex)
@@ -22,30 +26,36 @@ const PokemonCard = ({name,id}) => {
         if(isInLocalStorage){
             dispatch(RemoveToLocalStorage({
                 name,
-                id
+                url
             }))
 
         }else{
             
             dispatch(AddToLocalStorage({
                 name,
-                id
+                url
             }))
         }
 
     }
 
     return (
-        <div className='card position-relative'>
-            <div className='position-absolute p-2 d-flex flex-column justify-content-between'>
+        <li className={`${stylesCard.cart}  col-8 col-lg-2 p-2`}>
+            <div>
                 <Button onClick={()=>onTagle()} className={isInLocalStorage?"active":" "}>
-                {isInLocalStorage?"Retier":"ajouter"} 
+                    {isInLocalStorage ? "Retirer":"ajouter"} 
                 </Button>
-                <Link to={`pokemon/${id}`} className='btn btn-danger'>Détail</Link>
             </div>
-            <img className='card-img-top' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`} alt={name} />
-            <h3 className='text-center card-title'>{name}</h3>
-        </div>
+            <div>
+                <img className='card-img-top' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`} alt={name} />
+            </div>
+            <h4 className="text-white text-center">{name}</h4>
+            <div class="row">
+                <div class="col text-center">
+                    <Link to={`/pokemon/${id}`} className='btn btn-light text-center'>Détail</Link>
+                </div>
+            </div>
+        </li>
     )
 }
 export default PokemonCard

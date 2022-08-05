@@ -3,8 +3,10 @@
 *****************  START  BLOCK****************
 ***/
 
-.card{
-    width: 15rem;
-}
+.cart{
+    width: 18rem;
+    background-color:#574545;
+    margin:40px
+;}
 
 /**changer le nom de la page en module**/
