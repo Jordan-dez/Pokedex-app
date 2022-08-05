@@ -4,6 +4,7 @@ import stylesCard from "./PokemonCard.module.css"
 import {useDispatch,useSelector} from "react-redux";
 import {AddToLocalStorage,RemoveToLocalStorage} from "../../actions/index"
 import {getPokemonIdFromUrl} from "../../helpers/pokemonUtils/"
+import Swal from 'sweetalert2'
 
 
 
@@ -22,12 +23,32 @@ const PokemonCard = ({pokemon}) => {
         console.log("isInLocalStorage",isInLocalStorage)
 
     const onTagle =()=>{
+
         console.log("isInLocalStorage in if",isInLocalStorage)
         if(isInLocalStorage){
-            dispatch(RemoveToLocalStorage({
-                name,
-                url
-            }))
+
+            Swal.fire({
+                title: 'Etes-vous sûr ?',
+                text: "Voulez-vous le supprimer de votre pokédex ?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ok',
+                cancelButtonText:"Quitter"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    dispatch(RemoveToLocalStorage({
+                        name,
+                        url
+                    }))
+                  Swal.fire(
+                    'pokémon retiré !',
+                    "",
+                    "success"
+                  )
+                }
+              })
 
         }else{
             
