@@ -26,7 +26,6 @@ const PokemonCard = ({pokemon}) => {
 
         console.log("isInLocalStorage in if",isInLocalStorage)
         if(isInLocalStorage){
-
             Swal.fire({
                 title: 'Etes-vous sûr ?',
                 text: "Voulez-vous le supprimer de votre pokédex ?",

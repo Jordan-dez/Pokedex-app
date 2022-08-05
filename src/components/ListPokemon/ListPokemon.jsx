@@ -20,7 +20,8 @@ const ListPokemon = ({ pokemons,searchValue}) => {
                         }else if(pokemon.name.toLowerCase().includes(searchValue?.toLowerCase())){
                             return pokemon
                         }
-                    }).map((pokemon,index) =>{ 
+                    })
+                    .map((pokemon,index) =>{ 
                         // console.log("pokemon?.url",pokemon?.url)
                     return <PokemonCard
                             pokemon={pokemon}

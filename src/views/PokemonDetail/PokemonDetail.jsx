@@ -5,30 +5,27 @@ import React,{useEffect,useState} from 'react'
 import { useParams, Link } from 'react-router-dom'
 import axios from "axios"
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import { getPokemon } from '../../services/Pokemon/Pokemon/';
-import { useLocation } from 'react-router-dom';
+import {useFecthOnePokemon,useFecthPokemonEvolution} from '../../services/Pokemon/Pokemon/';
 import { v4 as uuidv4 } from 'uuid';
 
 const PokemonDetail = () => {
     /****
      * déclaration et initialisation du state qui recevra les infos du pokémon
      */
-     const [pokemon,setPokemon]=useState(null)
+    //  const [pokemon,setPokemon]=useState(null)
 
     /**
      *
      * Récupération de l'id de l'event sur lequel on a cliqué sur le button "detail"
     */
-     const params = useParams();
-     const { id } = params
-    useEffect(() => {
-        /***
-         * fetching pokémon avec l'id récurépré dans l'URL
-         */
-        getPokemon(id).then((data) => {
-          setPokemon(data);
-        });
-      },[id]);
+        const params = useParams();
+        const { id } = params;
+        const pokemon = useFecthOnePokemon(id);
+        const {pokemonEvolutions,pokemonSpecies}=useFecthPokemonEvolution(id);
+
+        const { flavor_text : description } = pokemonSpecies.flavor_text_entries?.find(({ language, version }) => {
+            return (language.name === 'en' && version.name === 'sword')
+        }) ?? {};
     return (
         <article>
             {
@@ -55,7 +52,7 @@ const PokemonDetail = () => {
                 </div>
             </div>
             <p><strong>Flame Pokémon</strong></p>
-            <p>It is said that charizards fire burns hotter if it has experienced harsh battles</p>
+            <p>{description}</p>
             <h5>Profile</h5>
             <div className="row">
                 <div className="col">
@@ -79,6 +76,9 @@ const PokemonDetail = () => {
                             pokemon.types.map(type=><p key={uuidv4()}> {type.type.name}</p>)
                         }
                     </div>
+                    <ul>
+                            {pokemonEvolutions?.map(evolution => <li key={uuidv4()}><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${evolution.id}.gif`} /><p>{evolution.name}</p></li>)}
+                    </ul>
                 
                 </>
             }

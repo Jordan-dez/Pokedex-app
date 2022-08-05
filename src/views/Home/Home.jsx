@@ -5,7 +5,7 @@ import React, { useEffect, useState, useCallback, useRef } from 'react'
 import ListPokemon from '../../components/ListPokemon/ListPokemon';
 import PokemonCard from '../../components/PokemonCard/PokemonCard';
 import axios from 'axios';
-import { getPokemons } from '../../services/Pokemon/Pokemons/';
+import { usePokemonList } from '../../services/Pokemon/Pokemons/';
 import SearchBar from '../../components/SearchBar/SearchBar'
 
 
@@ -20,23 +20,26 @@ const Home = () => {
   /**
    * USEEFFECT
    */
-  useEffect(() => {
-    setLoading(true);
-    /**
-     * resolution de la promesse et récupération des données depuis l'api
-     */
-    getPokemons().then((data) => {
-      setPokemons(data);
-      setLoading(false);
-    });
-  }, []);
-
+  // useEffect(() => {
+  //   setLoading(true);
+  //   /**
+  //    * resolution de la promesse et récupération des données depuis l'api
+  //    */
+  //   getPokemons().then((data) => {
+  //     setPokemons(data);
+  //     setLoading(false);
+  //   });
+  // }, []);
+  const Allpokemons=usePokemonList();
+  console.log("Allpokemons",Allpokemons)
+   
   return (
     
     <>
       <SearchBar setSearchValue={setSearchValue}/>
+
       <div className='cards'>
-        { pokemons &&  <ListPokemon pokemons={pokemons} loading={loading} searchValue={searchValue}/>}
+        { pokemons &&  <ListPokemon pokemons={Allpokemons} loading={loading} searchValue={searchValue}/>}
       </div> 
     </>
   )
