@@ -14,6 +14,7 @@ import Home from './views/Home/Home';
 import PokemonDetail from './views/PokemonDetail/PokemonDetail';
 import Pokedex from './views/Pokedex/Pokedex';
 import Footer from './components/Footer/Footer';
+import NotFound from './views/NotFound/NotFound404';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path='/Pokedex' element={<Pokedex />} />
           <Route path='/pokemon/:id' element={<PokemonDetail/>} />
+          <Route path='*' element={<NotFound/>} />
         </Routes>
       </main>
       <Footer/>
