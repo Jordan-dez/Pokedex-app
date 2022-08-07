@@ -331,3 +331,14 @@ html {
         margin: 12px;
     }
 }
+
+.fav_detail_btn {
+    border: none !important;
+    color: white;
+    font-size: 1.1rem !important;
+    display: flex;
+    align-items: center;
+    outline: none !important;
+    box-shadow: none !important;
+
+}
