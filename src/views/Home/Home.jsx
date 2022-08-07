@@ -16,7 +16,6 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [pokemons, setPokemons] = useState([]);
   const [searchValue,setSearchValue] = useState("");
-  const [displayCount, setDisplayCount] = useState(20);
   /**
    * USEEFFECT
    */
@@ -35,13 +34,13 @@ const Home = () => {
    
   return (
     
-    <>
+    <section className='container '>
       <SearchBar setSearchValue={setSearchValue}/>
 
-      <div className='cards'>
+      <div>
         { pokemons &&  <ListPokemon pokemons={Allpokemons} loading={loading} searchValue={searchValue}/>}
       </div> 
-    </>
+    </section>
   )
 }
 

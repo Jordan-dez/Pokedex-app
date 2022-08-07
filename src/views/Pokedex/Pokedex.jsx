@@ -11,11 +11,11 @@ const Pokedex = () => {
    */
   const pokedex = useSelector(state=>state.pokedex)
   return (
-    <>
+    <div className="container mt-4">
     {
       pokedex && <ListPokemon pokemons={pokedex}/>
     }
-    </>
+    </div>
   )
 }
 

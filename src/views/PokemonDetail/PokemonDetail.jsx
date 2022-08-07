@@ -29,9 +29,6 @@ const PokemonDetail = () => {
         return (language.name === 'en' && version.name === 'sword')
     }) ?? {};
 
-    console.log("pokemon", pokemon);
-    console.log("pokemonSpecies", pokemonSpecies);
-
     return (
         <div className='detail_container p-5'>
             {
@@ -45,19 +42,11 @@ const PokemonDetail = () => {
                             <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`} alt={pokemon.name} />
                         </div>
                         <div className="info__container__data__type">
-                            <div className="poke__type__bg grass">
-                                <img src="grass.png" alt="poke-type" />
-                            </div>
-                            <div className="poke__type__bg poison">
-                                <img src="poison.png" alt="poke-type" />
-                            </div>
-                        </div>
-                        <div className="info__container__data__type">
                             {
                                 pokemon.types.map(type => <>
-                                    <div className="poke__type__bg">
+                                    <p className="poke__type__bg" key={uuidv4()}>
                                         {type.type.name}
-                                    </div>
+                                    </p>
                                 </>)
                             }
                         </div>
@@ -71,14 +60,6 @@ const PokemonDetail = () => {
                             <p><span className="info__container__headings" style={{ fontSize: "20px" }}>Weight</span>: {pokemon.weight / 10} kg</p>
                         </div>
                         <div className="gender__container">
-                            <div>
-                                <span>
-                                    87.5% <i className="fa fa-mars">
-                                    </i>
-                                </span>
-                                <span>  12.5% <i className="fa fa-venus"></i>
-                                </span>
-                            </div>
                             <div>
                                 <p> Egg Groups :</p>
                                 <ul>
@@ -114,12 +95,12 @@ const PokemonDetail = () => {
                                 <div className="info__container__data__data">
                                     {
                                         pokemon && pokemon.stats.map(st =>
-                                            <div className="info__container__stat__columns">
+                                            <div className="info__container__stat__columns d-flex" key={uuidv4()}>
 
-                                                <p className="info__container__stat__columns__name">{st.stat.name}</p>
-                                                <p className="info__container__stat__columns__val">
-                                                    {st.base_stat}
-                                                </p>
+                                                <p className="info__container__stat__columns__name w-25">{st.stat.name}</p>
+                                                <div className="progress w-50">
+                                                    <div className="progress-bar bg-info " role="progressbar" style={{"width": `${st.base_stat*100/150}%`}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"> {st.base_stat}</div>
+                                                </div>
                                             </div>)
                                     }
                                 </div>
@@ -131,7 +112,7 @@ const PokemonDetail = () => {
                                 <div className="evolution__box">
                                     {
                                         pokemonEvolutions?.map((evolution, index, elements) =>
-                                            <div className="evolution__sub__box">
+                                            <div className="evolution__sub__box" key={uuidv4()}>
                                                 <div>
                                                     {/* style={{transform: rotate(360) translateZ(0)} */}
                                                     <div>
@@ -187,61 +168,3 @@ const PokemonDetail = () => {
 }
 
 export default PokemonDetail
-
-
-// <article className='container mt-4'>
-//             {
-//                 pokemon && <>
-
-//                     <h4>{pokemon.name}</h4>
-//                     <div>
-//                         <div>
-
-//                             <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-
-//                         </div>
-//                         <div className='row'>
-//                             {
-//                                 pokemon.stats.map(stat => {
-//                                     return <div key={uuidv4()}>
-//                                         <>
-//                                             <p className='col-6'>{stat.base_stat}</p>
-//                                             <ProgressBar now={stat.base_stat - 40} label={`${stat.base_stat}`} className="col-6" />
-//                                         </>
-//                                     </div>
-//                                 })
-//                             }
-//                         </div>
-//                     </div>
-//                     <p><strong>Flame Pokémon</strong></p>
-//                     <p>{description}</p>
-//                     <h5>Profile</h5>
-//                     <div className="row">
-//                         <div className="col">
-//                             <p><strong>Height :</strong> {pokemon.height / 10} m</p>
-//                             <p><strong>Catch Rate :</strong> 0%</p>
-//                             <p><strong>Egg Groups :</strong>Monster Dragon</p>
-//                             <p><strong>Abilities :</strong> {pokemon.abilities.map(ab => (<span key={uuidv4()}>{ab.ability.name}{','}</span>))}</p>
-//                         </div>
-//                         <div className="col">
-//                             <p><strong>Weight :</strong> {pokemon.weight / 10} kg</p>
-//                             <p><strong>Gender Ratio :</strong> 87.5% 12.5%(pas de data)</p>
-//                             <p><strong>Hatch Steps :</strong> 5100(pas de data)</p>
-//                             <p><strong>Abilities :</strong> Blaze,solar-power(pas de data)</p>
-//                         </div>
-
-//                     </div>
-
-
-//                     <div>
-//                         {
-//                             pokemon.types.map(type => <p key={uuidv4()}> {type.type.name}</p>)
-//                         }
-//                     </div>
-//                     <ul>
-//                         {pokemonEvolutions?.map(evolution => <li key={uuidv4()}><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${evolution.id}.gif`} /><p>{evolution.name}</p></li>)}
-//                     </ul>
-
-//                 </>
-//             }
-//         </article>

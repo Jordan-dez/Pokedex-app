@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 
 const SearchBar = ({setSearchValue}) => {
   return (
-    <Form className="d-flex">
+    <Form className="d-flex m-5">
         <Form.Control
             type="search"
             placeholder="Search"
