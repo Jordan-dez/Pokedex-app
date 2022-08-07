@@ -23,11 +23,8 @@ const PokemonCard = ({ pokemon }) => {
 
         pokemon.name === name
     )
-    console.log("isInLocalStorage", isInLocalStorage)
 
     const onTagle = () => {
-
-        console.log("isInLocalStorage in if", isInLocalStorage)
         if (isInLocalStorage) {
             Swal.fire({
                 title: 'Etes-vous sûr ?',

@@ -10,7 +10,6 @@ const Banner = () => {
      * Composant contenant le header 
      */
     const pokedex = useSelector(state=>state.pokedex)
-    console.log("pokedex",pokedex)
     return (
         <header>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{minHeight:"100px"}}>

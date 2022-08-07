@@ -14,7 +14,6 @@ const PokemonDetail = () => {
     /****
      * déclaration et initialisation du state qui recevra les infos du pokémon
      */
-    //  const [pokemon,setPokemon]=useState(null)
 
     /**
      *
@@ -36,7 +35,7 @@ const PokemonDetail = () => {
                 <div className="info__container">
                     <section className="info__container__img">
                         <p className="pokemon__id">#{pokemon.id}</p>
-                        <h1 className="pokemon__name">{pokemon.name}</h1>
+                        <p className="pokemon__name">{pokemon.name}</p>
                         <div className="pokemon__genera" style={{ background: "rgb(168, 255, 152)" }}>{pokemonSpecies?.genera[7].genus}</div>
                         <div>
                             <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`} alt={pokemon.name} />
@@ -72,14 +71,14 @@ const PokemonDetail = () => {
                     <section className="info__container__data">
                         <div className="right__box">
                             <section>
-                                <h3 className="info__container__headings">Description</h3>
+                                <h2 className="info__container__headings">Description</h2>
                                 <p className="desc">{description}</p>
                             </section>
 
                             <section className="info__container__data__header">
                                 <div className="info__container__data__abilities">
-                                    <h2 className="info__container__headings">Abilities
-                                    </h2>
+                                    <h3 className="info__container__headings">Abilities
+                                    </h3>
                                     <div className="ability__list__bg">
                                         <ul className="ability__list">
                                             {pokemon.abilities && pokemon?.abilities?.map(ab => (<li key={uuidv4()}>{ab.ability.name}</li>))}
@@ -114,10 +113,8 @@ const PokemonDetail = () => {
                                         pokemonEvolutions?.map((evolution, index, elements) =>
                                             <div className="evolution__sub__box" key={uuidv4()}>
                                                 <div>
-                                                    {/* style={{transform: rotate(360) translateZ(0)} */}
                                                     <div>
                                                         <div className="evolution__img__div">
-                                                            {/* style="background: linear-gradient(rgb(168, 255, 152), rgb(214, 162, 228)); */}
                                                             <div className="transparency__div">
                                                                 <span className=" lazy-load-image-background blur" style={{ display: "inline-block", height: "80", width: "80" }}>
                                                                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${evolution.id}.svg`} alt={evolution.name} className="evo_img" style={{ display: "inline-block", width: "80", height: "80" }}>
@@ -136,27 +133,6 @@ const PokemonDetail = () => {
                                         )
 
                                     }
-                                    {/* <li key={uuidv4()}><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${evolution.id}.gif`} /><p>{evolution.name}</p></li> */}
-
-                                    {/* <div className="evolution__sub__box">
-                                        <div>
-                                            <div>
-                                                <div className="evolution__img__div" style={{ background: "linearGradient(rgb(168, 255, 152)" }}>
-                                                    <div className="transparency__div">
-                                                        <span className=" lazy-load-image-background blur" style={{ display: "inline-block", height: "80", width: "80" }}>
-                                                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg" alt="toto" className="evo_img" style={{ display: "inline-block", width: "80", height: "80" }} />
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="evolution__poke__name">
-                                                ivysaur
-                                            </div>
-                                        </div>
-                                        <svg className="MuiSvgIcon-root arrow__right" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"></path>
-                                        </svg>
-                                    </div> */}
                                 </div>
                             </section>
                         </div>

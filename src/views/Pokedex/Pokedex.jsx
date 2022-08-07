@@ -13,7 +13,11 @@ const Pokedex = () => {
   return (
     <div className="container mt-4">
     {
-      pokedex && <ListPokemon pokemons={pokedex}/>
+      pokedex &&<>{
+        pokedex.length===0? <p className='text-center'>pas de pokémon mis en favoris</p>:
+          <ListPokemon pokemons={pokedex}/>
+      }
+      </> 
     }
     </div>
   )

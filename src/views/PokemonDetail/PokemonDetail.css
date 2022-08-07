@@ -1,20 +1,13 @@
+/**********************
+**********  ****** Feuille de style POKEMONDETAIL ******************
+*****************  START  BLOCK****************
+***/
+
 html {
-    --pokename: #000;
-    --cardborder: #fff;
     --pokenumber: hsl(228, 28%, 20%);
-    --info: #fff;
-    /* --bggradient: url("../assets/images/bg.png"); */
     --bgcolor: none;
 }
 
-html[data-theme=dark] {
-    --pokename: hsl(228, 28%, 20%);
-    --cardborder: hsl(228, 28%, 20%);
-    --pokenumber: hsl(228, 28%, 20%);
-    --info: hsl(228, 28%, 20%);
-    --bggradient: none;
-    --bgcolor: #16171f;
-}
 
 .detail_container {
     height: 100%;
@@ -120,14 +113,6 @@ html[data-theme=dark] {
     box-shadow: 0 10px 20px rgba(175, 136, 136, 0.29), 0 6px 6px rgba(0, 0, 0, 0.43);
 }
 
-.MuiDialog-container {
-    background-color: var(--bgcolor);
-    background-image: var(--bggradient);
-}
-
-.MuiBackdrop-root {
-    background-color: rgba(0, 0, 0, 0);
-}
 
 .info__container__data__dimensions {
     display: flex;
@@ -139,23 +124,11 @@ html[data-theme=dark] {
     color: crimson;
 }
 
-.dialog__bg {
-    /* background-image: url("../assets/images/bg.png"); */
-    background-repeat: repeat;
-}
-
-.dialog__content {
-    font-family: 'VT323', monospace;
-    font-size: 21px;
-}
 
 .pokemon__name {
     font-family: 'Press Start 2P', cursive;
 }
 
-.close__btn {
-    width: 30px !important;
-}
 
 .ability {
     text-transform: capitalize;
@@ -169,14 +142,7 @@ html[data-theme=dark] {
     gap: 3px 0px;
 }
 
-.noselect {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
+
 
 .evolution__box {
     display: flex;
